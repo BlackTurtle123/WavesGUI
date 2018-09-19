@@ -1,4 +1,4 @@
-import { Money } from '@waves/data-entities';
+import { Money } from '@turtlenetwork/data-entities';
 import { IPollAPI, Poll } from '../utils/Poll';
 import { balanceList } from '../api/assets/assets';
 import { hasSignature, getOrders } from '../api/matcher/getOrders';

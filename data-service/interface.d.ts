@@ -1,4 +1,4 @@
-import { Asset, AssetPair, BigNumber, Money } from '@waves/data-entities';
+import { Asset, AssetPair, BigNumber, Money } from '@turtlenetwork/data-entities';
 
 export interface IHash<T> {
     [key: string]: T;

@@ -1,4 +1,4 @@
-import { Asset, Money, BigNumber } from '@waves/data-entities';
+import { Asset, Money, BigNumber } from '@turtlenetwork/data-entities';
 import { get as configGet, getDataService } from '../../config';
 import { request } from '../../utils/request';
 import { IBalanceItem, assetsApi } from './interface';

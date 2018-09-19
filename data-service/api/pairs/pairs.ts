@@ -1,11 +1,11 @@
-import { Asset, AssetPair, Money, BigNumber } from '@waves/data-entities';
+import { Asset, AssetPair, Money, BigNumber } from '@turtlenetwork/data-entities';
 import { getDataService } from '../../config';
 import { request } from '../../utils/request';
 import { get as getAsset } from '../assets/assets';
-import { createOrderPair } from '@waves/assets-pairs-order';
+import { createOrderPair } from '@turtlenetwork/assets-pairs-order';
 import { WAVES_ID } from '@turtlenetwork/tn-signature-generator';
 import { IPairJSON } from '@turtlenetwork/data-service-client-js/src/types';
-import { TMoneyInput } from '@waves/data-entities/dist/entities/Money';
+import { TMoneyInput } from '@turtlenetwork/data-entities/dist/entities/Money';
 
 
 export function get(assetId1: string | Asset, assetId2: string | Asset): Promise<AssetPair> {

@@ -9,12 +9,12 @@
         'papaparse': 'Papa',
         'waves-api': 'WavesAPI',
         'identity-img': 'identityImg',
-        '@waves/data-entities': 'ds.wavesDataEntities',
+        '@turtlenetwork/data-entities': 'ds.wavesDataEntities',
         '@turtlenetwork/tn-signature-generator': 'wavesSignatureGenerator',
         'ramda': 'R',
         'data-service': 'ds',
         'handlebars': 'Handlebars',
-        '@waves/waves-browser-bus': 'bus',
+        '@turtlenetwork/tn-browser-bus': 'bus',
         'worker-wrapper': 'workerWrapper'
     };
 

@@ -2,7 +2,7 @@
 (function () {
     'use strict';
 
-    const entities = require('@waves/data-entities');
+    const entities = require('@turtlenetwork/data-entities');
     const R = require('ramda');
 
     /**

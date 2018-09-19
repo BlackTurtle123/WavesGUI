@@ -5,7 +5,7 @@
 
     const tsUtils = require('ts-utils');
     const tsApiValidator = require('ts-api-validator');
-    const { WindowAdapter, Bus } = require('@waves/waves-browser-bus');
+    const { WindowAdapter, Bus } = require('@turtlenetwork/tn-browser-bus');
 
     class BigNumberPart extends tsApiValidator.BasePart {
 
@@ -21,7 +21,7 @@
 
     }
 
-    const dataEntities = require('@waves/data-entities');
+    const dataEntities = require('@turtlenetwork/data-entities');
 
     /**
      * @name app.utils

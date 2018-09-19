@@ -1,6 +1,6 @@
 import { IAssetPair, IHash } from '../interface';
 import { WAVES_ID } from '@turtlenetwork/tn-signature-generator';
-import { BigNumber, Asset, Money, AssetPair, OrderPrice } from '@waves/data-entities';
+import { BigNumber, Asset, Money, AssetPair, OrderPrice } from '@turtlenetwork/data-entities';
 import { get } from '../api/assets/assets';
 import { get as configGet, timeDiff } from '../config';
 

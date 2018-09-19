@@ -1,4 +1,4 @@
-import { Asset, Money } from '@waves/data-entities';
+import { Asset, Money } from '@turtlenetwork/data-entities';
 import { txApi as txApi } from '../transactions/interface';
 
 export module assetsApi {

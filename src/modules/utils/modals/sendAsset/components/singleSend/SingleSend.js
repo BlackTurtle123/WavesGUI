@@ -6,7 +6,7 @@
         [WavesApp.defaultAssets.EUR]: true
     };
 
-    const { Money } = require('@waves/data-entities');
+    const { Money } = require('@turtlenetwork/data-entities');
 
     /**
      * @param {Base} Base

@@ -1,5 +1,5 @@
 import { IHash } from '../interface';
-import { Money } from '@waves/data-entities';
+import { Money } from '@turtlenetwork/data-entities';
 import { listUTX } from '../api/transactions/transactions';
 import { T_TX } from '../api/transactions/interface';
 import { IPollAPI, Poll } from '../utils/Poll';

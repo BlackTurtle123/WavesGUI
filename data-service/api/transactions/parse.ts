@@ -1,4 +1,4 @@
-import { Money, Asset, BigNumber, OrderPrice, AssetPair } from '@waves/data-entities';
+import { Money, Asset, BigNumber, OrderPrice, AssetPair } from '@turtlenetwork/data-entities';
 import { TRANSACTION_TYPE_NUMBER, utils, libs } from '@turtlenetwork/tn-signature-generator';
 import { get } from '../assets/assets';
 import {

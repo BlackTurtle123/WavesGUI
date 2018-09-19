@@ -8,7 +8,7 @@
     "url": "https://github.com/BlackTurtle123/WavesGUI.git"
   },
   "author": {
-    "name": "Waves Platform",
+    "name": "TurtleNetwork",
     "email": "info@blackturtle.eu",
     "url": "https://blackturtle.eu"
   },
@@ -92,8 +92,8 @@
     "@turtlenetwork/assets-pairs-order": "4.0.0",
     "@turtlenetwork/data-entities": "7.0.0",
     "@turtlenetwork/data-service-client-js": "0.5.1",
-    "@waves/event-sender": "0.4.4",
-    "@waves/waves-browser-bus": "0.0.7",
+    "@turtlenetwork/event-sender": "0.4.4",
+    "@turtlenetwork/tn-browser-bus": "0.0.7",
     "@turtlenetwork/tn-signature-generator": "0.14.0",
     "angular": "1.6.6",
     "angular-animate": "1.6.6",

@@ -1,5 +1,5 @@
 import { WAVES_ID } from '@turtlenetwork/tn-signature-generator';
-import { Asset, AssetPair, BigNumber, Money, OrderPrice } from '@waves/data-entities';
+import { Asset, AssetPair, BigNumber, Money, OrderPrice } from '@turtlenetwork/data-entities';
 import { IHash, IMoneyFactory, IPriceMoneyFactory } from '../../interface';
 import { coinsMoneyFactory, normalizeAssetId, normalizeTime, priceMoneyFactory, toHash } from '../../utils/utils';
 import { Signal } from 'ts-utils';

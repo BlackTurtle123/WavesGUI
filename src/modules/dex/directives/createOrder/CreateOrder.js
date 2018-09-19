@@ -19,7 +19,7 @@
     const controller = function (Base, waves, user, utils, createPoll, $scope,
                                  $element, notification, dexDataService, ease, $state, modalManager) {
 
-        const entities = require('@waves/data-entities');
+        const entities = require('@turtlenetwork/data-entities');
         const ds = require('data-service');
 
         class CreateOrder extends Base {

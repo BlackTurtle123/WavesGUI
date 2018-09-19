@@ -10,7 +10,7 @@
     const factory = function (assets, utils, decorators) {
 
         const ds = require('data-service');
-        const entities = require('@waves/data-entities');
+        const entities = require('@turtlenetwork/data-entities');
 
         class WavesUtils {
 

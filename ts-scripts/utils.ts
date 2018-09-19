@@ -11,7 +11,7 @@ import { render } from 'less';
 import { minify } from 'html-minifier';
 import { Readable, Writable } from 'stream';
 import { get, ServerResponse, IncomingMessage } from 'https';
-import { MAINNET_DATA, TESTNET_DATA } from '@waves/assets-pairs-order';
+import { MAINNET_DATA, TESTNET_DATA } from '@turtlenetwork/assets-pairs-order';
 
 export const task: ITaskFunction = gulp.task.bind(gulp) as any;
 

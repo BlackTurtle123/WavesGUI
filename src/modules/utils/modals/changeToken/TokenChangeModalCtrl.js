@@ -12,7 +12,7 @@
      */
     const controller = function (Base, $scope, createPoll, utils, waves, user) {
 
-        const entities = require('@waves/data-entities');
+        const entities = require('@turtlenetwork/data-entities');
 
         class TokenChangeModalCtrl extends Base {
 
