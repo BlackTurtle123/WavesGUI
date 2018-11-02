@@ -158,12 +158,12 @@
     "mainnet": {
       "apiVersion": "v0",
       "code": "L",
-      "node": "https://privatematcher.blackturtle.eu",
+      "node": "https://privatenode3.blackturtle.eu",
       "matcher": "https://privatematcher.blackturtle.eu",
       "api": "https://api.blackturtle.eu",
       "coinomat": "",
       "support": "https://blackturtle.eu",
-      "nodeList": "",
+      "nodeList": "http://statistics.blackturtle.eu/generators/",
       "scamListUrl": "https://raw.githubusercontent.com/BlackTurtle123/TN-community/master/scam.csv",
       "assets": {
         "BTC": "5Asy9P3xjcvBAgbeyiitZhBRJZJ2TPGSZJz9ihDTnB3d",
