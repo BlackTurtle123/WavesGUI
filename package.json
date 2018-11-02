@@ -84,17 +84,17 @@
     "electron:osx": "electron-packager ./dist/desktop/mainnet/min/ --icon=./electron/icons/icon.icns --platform=darwin --out=./dist/osx",
     "electron": "gulp all && npm run electron:linux && npm run electron:win && npm run electron:osx",
     "electron-debug": "gulp html-desktop-mainnet-min && node_modules/.bin/electron ./dist/desktop/electron-debug --inspect",
-    "data-service": "tsc -p ./data-service && ./node_modules/.bin/browserify data-service/index.js -s ds -u ts-utils -u @turtlenetwork/tn-signature-generator -u ramda --no-bf -o ./data-service-dist/data-service.js"
+    "data-service": "tsc -p ./data-service && ./node_modules/.bin/browserify data-service/index.js -s ds -u ts-utils -u @turtlenetwork/signature-generator -u ramda --no-bf -o ./data-service-dist/data-service.js"
   },
   "dependencies": {
     "@types/ramda": "0.25.34",
     "@uirouter/angularjs": "1.0.8",
-    "@turtlenetwork/assets-pairs-order": "4.0.0",
+    "@turtlenetwork/assets-pairs-order": "3.2.8",
     "@turtlenetwork/data-entities": "7.0.0",
-    "@turtlenetwork/data-service-client-js": "0.5.1",
+    "@turtlenetwork/data-service-client-js": "0.3.2",
     "@turtlenetwork/event-sender": "0.4.4",
     "@turtlenetwork/tn-browser-bus": "0.0.7",
-    "@turtlenetwork/tn-signature-generator": "0.14.0",
+    "@turtlenetwork/signature-generator": "1.0.1",
     "angular": "1.6.6",
     "angular-animate": "1.6.6",
     "angular-aria": "1.6.6",

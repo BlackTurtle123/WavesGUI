@@ -10,7 +10,7 @@
         'waves-api': 'WavesAPI',
         'identity-img': 'identityImg',
         '@turtlenetwork/data-entities': 'ds.wavesDataEntities',
-        '@turtlenetwork/tn-signature-generator': 'wavesSignatureGenerator',
+        '@turtlenetwork/signature-generator': 'wavesSignatureGenerator',
         'ramda': 'R',
         'data-service': 'ds',
         'handlebars': 'Handlebars',
