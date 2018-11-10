@@ -91,7 +91,7 @@
     "@uirouter/angularjs": "1.0.8",
     "@turtlenetwork/assets-pairs-order": "3.2.8",
     "@turtlenetwork/data-entities": "7.0.0",
-    "@turtlenetwork/data-service-client-js": "0.3.2",
+    "@turtlenetwork/data-service-client-js": "0.8.1",
     "@turtlenetwork/event-sender": "0.4.4",
     "@turtlenetwork/tn-browser-bus": "0.0.7",
     "@turtlenetwork/signature-generator": "1.0.1",
