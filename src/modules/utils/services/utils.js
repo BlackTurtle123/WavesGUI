@@ -5,7 +5,9 @@
 
     const tsUtils = require('ts-utils');
     const tsApiValidator = require('ts-api-validator');
-    const { WindowAdapter, Bus } = require('@turtlenetwork/tn-browser-bus');
+    const { WindowAdapter, Bus } = require('@turtlenetwork/waves-browser-bus');
+    const { splitEvery, pipe } = require('ramda');
+    const { libs } = require('@turtlenetwork/signature-generator');
 
     class BigNumberPart extends tsApiValidator.BasePart {
 
@@ -44,6 +46,86 @@
                 BigNumberPart
             },
 
+            removeUrlProtocol(url) {
+                return url.replace(/.+?(:\/\/)/, '');
+            },
+
+            /**
+             * @name app.utils#getUrlForRoute
+             * @param {string} [url]
+             * @return string
+             */
+            getUrlForRoute(url) {
+                url = decodeURI(url || location.href);
+
+                const getHash = url => {
+                    if (url.includes('#')) {
+                        return url.slice(url.indexOf('#')).replace('#', '/');
+                    } else {
+                        return '';
+                    }
+                };
+
+                const processor = pipe(
+                    utils.removeUrlProtocol,
+                    getHash
+                );
+
+                return processor(url);
+            },
+
+            /**
+             * @name app.utils#getRouterParams
+             * @param {string} url
+             * @return object
+             */
+            getRouterParams(url) {
+                /**
+                 * @type {typeof Router}
+                 */
+                const Router = $injector.get('Router');
+                const router = new Router();
+
+                const makeRouterHandler = name => (params = Object.create(null), search = Object.create(null)) => {
+                    const url = Router.ROUTES[name];
+                    return { name, url, data: { ...params, ...search } };
+                };
+
+                Object.keys(Router.ROUTES).forEach(name => {
+                    const handler = makeRouterHandler(name);
+                    router.registerRoute(Router.ROUTES[name], handler);
+                });
+
+                return router.apply(url);
+            },
+
+            /**
+             * @name app.utils#createQS
+             * @param {object} obj
+             * @return {string}
+             */
+            createQS(obj) {
+                /* eslint-disable */
+                const customSerialize = v => {
+                    switch (true) {
+                        case v instanceof Date:
+                            return v.getTime();
+                        default:
+                            return v;
+                    }
+                };
+                const createKeyValue = (key, v) => `${key}=${customSerialize(v)}`;
+                const createArrayKeyValue = (key, values) => values.map(v => createKeyValue(`${key}[]`, v)).join('&');
+                const qs = Object.entries(obj)
+                    .filter(([_, value]) => value !== undefined)
+                    .map(([key, value]) => {
+                        return Array.isArray(value) ? createArrayKeyValue(key, value) : createKeyValue(key, value);
+                    })
+                    .join('&');
+                return qs === '' ? qs : `?${qs}`;
+                /* eslint-enable */
+            },
+
             /**
              * @name app.utils#observe
              * @param {object} target
@@ -55,6 +137,21 @@
              */
             observe(target, keys, options) {
                 return _addObserverSignals(target, keys, options);
+            },
+
+            /**
+             * @name app.utils#getPublicKeysFromScript
+             * @param {string} script
+             * @return {Array<string>}
+             */
+            getPublicKeysFromScript(script) {
+                const toBytes = key => splitEvery(2, key)
+                    .map(byte16 => parseInt(byte16, 16));
+
+                return (script.match(/ByteVector\(\d+\sbytes,\s(.[^)]+)/g) || [])
+                    .map(res => res.replace(/ByteVector\(\d+\sbytes,\s0x/, ''))
+                    .map(toBytes)
+                    .map(libs.base58.encode);
             },
 
             /**
@@ -117,12 +214,33 @@
                 const hashes = search.slice(search.indexOf('?') + 1).split('&').filter(Boolean);
                 const params = Object.create(null);
 
+                const normalizeValue = value => {
+                    const num = Number(value);
+                    return String(num) === value ? num : value;
+                };
+
+                const add = (name, value) => {
+                    if (value == null) {
+                        params[name] = true;
+                    } else {
+                        params[name] = normalizeValue(decodeURIComponent(value));
+                    }
+                };
+
+                const addArray = (name, value) => {
+                    const key = name.replace('[]', '');
+                    if (!params[key]) {
+                        params[key] = [];
+                    }
+                    params[key].push(normalizeValue(decodeURIComponent(value)));
+                };
+
                 hashes.forEach((hash) => {
                     const [key, val] = hash.split('=');
-                    if (val == null) {
-                        params[key] = true;
+                    if (key.includes('[]')) {
+                        addArray(key, val);
                     } else {
-                        params[key] = decodeURIComponent(val);
+                        add(key, val);
                     }
                 });
 

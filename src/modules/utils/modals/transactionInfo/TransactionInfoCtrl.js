@@ -4,7 +4,7 @@
     /**
      *
      * @param Base
-     * @param $scope
+     * @param {$rootScope.Scope} $scope
      * @param {ExplorerLinks} explorerLinks
      * @param {Waves} waves
      * @param {IPollCreate} createPoll
@@ -45,14 +45,22 @@
                     .then(({ transaction, confirmations }) => {
 
                         this.transaction = transaction;
+                        this.signable = ds.signature.getSignatureApi().makeSignable({
+                            type: transaction.type,
+                            data: transaction
+                        });
                         this.confirmations = confirmations;
                         this.confirmed = !transaction.isUTX;
                         this.explorerLink = explorerLinks.getTxLink(transaction.id);
                         createPoll(this, this._getHeight, this._setHeight, 1000);
+
+                        $scope.$apply();
                     })
                     .catch(() => {
                         clearTimeout(this.timer);
                         this.timer = setTimeout(() => this._getData(), 2000);
+
+                        $scope.$apply();
                     });
             }
 

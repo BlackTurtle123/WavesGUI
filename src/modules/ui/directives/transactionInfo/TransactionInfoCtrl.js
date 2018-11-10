@@ -1,75 +1,37 @@
 (function () {
     'use strict';
 
-    const PATH = 'modules/ui/directives/transactionInfo/types';
-
     /**
      *
      * @param Base
      * @param {$rootScope.Scope} $scope
-     * @param $filter
-     * @param {ExplorerLinks} explorerLinks
-     * @param {BaseAssetService} baseAssetService
-     * @param {DexService} dexService
-     * @param {Waves} waves
      * @return {TransactionInfoCtrl}
      */
-    const controller = function (Base, $scope, $filter, explorerLinks, baseAssetService, dexService, waves) {
+    const controller = function (Base, $scope) {
+
+        const { SIGN_TYPE } = require('@turtlenetwork/signature-adapter');
 
         class TransactionInfoCtrl extends Base {
 
             constructor() {
                 super($scope);
-
                 /**
-                 * @type {ITransaction}
+                 * @type {boolean}
                  */
-                this.transaction = null;
+                this.isTockenIssue = false;
+                /**
+                 * @type {Signable}
+                 */
+                this.signable = null;
             }
 
             $postLink() {
-                const transaction = this.transaction;
-
-                this.templateUrl = `${PATH}/${transaction.templateType}.html`;
-                this.datetime = $filter('date')(transaction.timestamp, 'dd.MM.yyyy, HH:mm');
-                this.shownAddress = transaction.shownAddress;
-                this.typeName = transaction.typeName;
-                this.numberOfRecipients = transaction.numberOfRecipients;
-                this.isScam = !!WavesApp.scam[this.transaction.assetId];
-                this.explorerLink = explorerLinks.getTxLink(transaction.id);
-
-                if (transaction.amount || (transaction.lease && transaction.lease.amount)) {
-                    const amount = transaction.amount || transaction.lease.amount;
-                    baseAssetService.convertToBaseAsset(amount)
-                        .then((baseMoney) => {
-                            this.mirrorBalance = baseMoney;
-                            $scope.$digest();
-                        });
+                if (!this.signable) {
+                    throw new Error('Has no signable!');
                 }
 
-                const TYPES = waves.node.transactions.TYPES;
-
-                if (this.typeName === TYPES.BURN || this.typeName === TYPES.ISSUE || this.typeName === TYPES.REISSUE) {
-                    this.name = tsUtils.get(this.transaction, 'amount.asset.name') ||
-                        tsUtils.get(this.transaction, 'quantity.asset.name') ||
-                        this.transaction.name;
-                    this.amount = (tsUtils.get(this.transaction, 'amount') ||
-                        tsUtils.get(this.transaction, 'quantity')).toFormat();
-                    this.quantity = this.transaction.quantity || this.transaction.amount;
-                    this.precision = this.transaction.precision ||
-                        (this.quantity.asset ? this.quantity.asset.precision : 0);
-                }
-
-                if (this.typeName === TYPES.EXCHANGE_BUY || this.typeName === TYPES.EXCHANGE_SELL) {
-                    this.totalPrice = dexService.getTotalPrice(this.transaction.amount, this.transaction.price);
-                    if (this.typeName === TYPES.EXCHANGE_BUY) {
-                        this.calculatedFee = this.transaction.buyMatcherFee;
-                    } else {
-                        this.calculatedFee = this.transaction.sellMatcherFee;
-                    }
-                } else {
-                    this.calculatedFee = this.transaction.fee;
-                }
+                const { type } = this.signable.getTxData();
+                this.isTockenIssue = type === SIGN_TYPE.ISSUE;
             }
 
         }
@@ -77,14 +39,14 @@
         return new TransactionInfoCtrl();
     };
 
-    controller.$inject = ['Base', '$scope', '$filter', 'explorerLinks', 'baseAssetService', 'dexService', 'waves'];
+    controller.$inject = ['Base', '$scope'];
 
     angular.module('app.ui').component('wTransactionInfo', {
         bindings: {
-            transaction: '<',
-            warning: '<'
+            signable: '<'
         },
         templateUrl: 'modules/ui/directives/transactionInfo/transaction-info.html',
+        scope: false,
         controller
     });
 })();

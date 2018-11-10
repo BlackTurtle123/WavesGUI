@@ -1,5 +1,7 @@
 {
   "vendors": [
+    "node_modules/parse-json-bignumber/dist/parse-json-bignumber.min.js",
+    "node_modules/@turtlenetwork/assets-pairs-order/dist/browser.js",
     "node_modules/worker-wrapper/dist/WorkerWrapper.min.js",
     "node_modules/handlebars/dist/handlebars.min.js",
     "node_modules/ramda/dist/ramda.min.js",
@@ -92,6 +94,20 @@
         "group": ",",
         "decimal": "."
       }
+    },
+    "pt": {
+      "name": "Pt",
+      "separators": {
+        "group": ",",
+        "decimal": "."
+      }
+    },
+    "pl": {
+      "name": "Pl",
+      "separators": {
+        "group": ",",
+        "decimal": "."
+      }
     }
   },
   "electronScripts": [
@@ -109,7 +125,7 @@
     "ts-scripts/loginDaemon.js",
     "ts-scripts/mobileConsole.js"
   ],
-  "domain": "https://beta.wavesplatform.com",
+  "domain": "https://client.wavesplatform.com",
   "copyNodeModules": [
     "node_modules/qrcode-reader/dist/index.min.js",
     "node_modules/parse-json-bignumber/dist/parse-json-bignumber.min.js"
@@ -123,7 +139,23 @@
       "license"
     ],
     "defaults": {
-      "main": "main.js"
+      "main": "main.js",
+      "devDependencies": {
+        "electron-builder": "20.5.1",
+        "electron": "2.0.5",
+        "electron-rebuild": "^1.8.2"
+      },
+      "dependencies": {
+        "@ledgerhq/hw-transport-node-hid": "4.22.0",
+        "babel-runtime": "^6.26.0",
+        "i18next": "9.1.0",
+        "parse-json-bignumber": "0.0.2",
+        "qrcode-reader": "1.0.3",
+        "ts-utils": "6.0.2"
+      },
+      "scripts": {
+        "postinstall": "node_modules/.bin/electron-rebuild --force"
+      }
     },
     "server": "desktop.wavesplatform.com"
   },
@@ -136,7 +168,8 @@
       "node": "https://pool.testnet.wavesnodes.com",
       "matcher": "https://tntestnetmatcher.blackturtle.eu",
       "api": "https://api.testnet.wavesplatform.com",
-      "coinomat": "https://test.coinomat.com",
+      "explorer": "https://testnet.wavesexplorer.com",
+      "coinomat": "https://localhost:8080/coinomat",
       "support": "https://support.wavesplatform.com",
       "nodeList": "http://dev.pywaves.org/testnet/generators/",
       "scamListUrl": "https://raw.githubusercontent.com/BlackTurtle123/TN-community/master/scam.csv",
@@ -161,6 +194,7 @@
       "node": "https://privatenode3.blackturtle.eu",
       "matcher": "https://privatematcher.blackturtle.eu",
       "api": "https://api.blackturtle.eu",
+      "explorer": "https://explorer.blackturtle.eu",
       "coinomat": "",
       "support": "https://blackturtle.eu",
       "nodeList": "http://statistics.blackturtle.eu/generators/",

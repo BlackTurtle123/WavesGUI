@@ -15,6 +15,8 @@
 
         const tsUtils = require('ts-utils');
         const ds = require('data-service');
+        const { Money } = require('@turtlenetwork/data-entities');
+        const { SIGN_TYPE } = require('@turtlenetwork/signature-adapter');
 
         const DEFAULT_OPTIONS = {
             clickOutsideToClose: true,
@@ -56,6 +58,15 @@
                 });
             }
 
+            showScriptModal() {
+                return this._getModal({
+                    id: 'script-modal',
+                    contentUrl: 'modules/utils/modals/script/script.html',
+                    controller: 'ScriptModalCtrl',
+                    title: 'modal.script.setScript'
+                });
+            }
+
             showTryDesktopModal() {
                 return this._getModal({
                     id: 'try-desktop',
@@ -68,9 +79,36 @@
                 });
             }
 
+            showSignLedger(options) {
+                return this._getModal({
+                    id: 'signable-ledger',
+                    contentUrl: 'modules/utils/modals/signLedger/signLedger.html',
+                    controller: 'SignLedgerCtrl',
+                    locals: {
+                        ledgerPromise: () => options.promise,
+                        mode: options.mode,
+                        id: options.id,
+                        data: options.data
+                    },
+                    clickOutsideToClose: false,
+                    escapeToClose: false
+                });
+            }
+
+            showLedgerError(locals) {
+                return this._getModal({
+                    id: 'error-ledger',
+                    contentUrl: 'modules/utils/modals/ledgerError/ledgerError.html',
+                    controller: 'LedgerErrorCtrl',
+                    locals: { ...locals },
+                    clickOutsideToClose: false,
+                    escapeToClose: false
+                });
+            }
+
             showGatewaySign(search) {
                 return this._getModal({
-                    id: 'gateway-sign-in',
+                    id: 'gateway-signable-in',
                     title: '{{$ctrl.titleLiteral}}',
                     contentUrl: 'modules/utils/modals/gateway/gatewaySign.html',
                     controller: 'GatewaySignCtrl',
@@ -151,13 +189,13 @@
                     });
             }
 
-            showConfirmDeleteUser(hasBackup) {
+            showConfirmDeleteUser(user) {
                 return this._getModal({
                     id: 'delete-user-confirm',
                     templateUrl: 'modules/utils/modals/confirmDeleteUser/confirmDeleteUser.modal.html',
                     controller: 'confirmDeleteUserCtrl',
                     locals: {
-                        hasBackup
+                        user
                     }
                 });
             }
@@ -205,7 +243,8 @@
                         amount: data.amount,
                         recipient: data.recipient,
                         strict: data.strict,
-                        referrer: data.referrer
+                        referrer: data.referrer,
+                        attachment: data.attachment
                     }
                 });
             }
@@ -292,6 +331,16 @@
                 });
             }
 
+            showAnyTx(tx) {
+                return this._getModal({
+                    id: 'any-tx-modal',
+                    controller: 'AnyTxModalCtrl',
+                    contentUrl: 'modules/utils/modals/anyTxModal/any-tx-modal.html',
+                    title: 'modals.anyTx.title',
+                    locals: tx
+                });
+            }
+
             showStartLeasing() {
                 return this._getModal({
                     id: 'start-leasing',
@@ -303,13 +352,12 @@
                 });
             }
 
-            showConfirmTx(type, txData) {
-                const tx = $injector.get('waves').node.transactions.createTransaction(type, txData);
-
+            showConfirmTx(signable, showValidationErrors) {
                 return this._getModal({
                     id: 'confirm-tx',
+                    mod: 'confirm-tx',
                     ns: 'app.ui',
-                    locals: { tx },
+                    locals: { signable, showValidationErrors },
                     controller: 'ConfirmTxCtrl',
                     contentUrl: 'modules/utils/modals/confirmTx/confirmTx.modal.html'
                 });
@@ -335,6 +383,44 @@
                     contentUrl: 'modules/utils/modals/changeToken/change-token-modal.html',
                     controller: 'TokenChangeModalCtrl'
                 }));
+            }
+
+            showSponsorshipModal(assetId, isEdit) {
+                const title = isEdit ? 'modal.sponsorship_edit.title' : 'modal.sponsorship.title';
+                return ds.api.assets.get(assetId).then((asset) => {
+                    return this._getModal({
+                        id: 'sponsorship',
+                        mod: 'sponsorship',
+                        locals: { asset, assetId, isCreateSponsored: !isEdit },
+                        titleContent: `<span w-i18n="${title}"></span>`,
+                        controller: 'SponsoredModalCtrl',
+                        contentUrl: 'modules/utils/modals/sponsored/sponsored.html'
+                    });
+                });
+            }
+
+            showSponsorshipStopModal(assetId) {
+                const waves = $injector.get('waves');
+
+                return Promise.all([
+                    ds.api.assets.get(assetId),
+                    waves.node.getFee({ type: WavesApp.TRANSACTION_TYPES.NODE.SPONSORSHIP })
+                ]).then(([asset, fee]) => {
+                    const money = new Money(0, asset);
+                    const tx = waves.node.transactions.createTransaction({
+                        type: SIGN_TYPE.SPONSORSHIP,
+                        assetId,
+                        asset,
+                        minSponsoredAssetFee: money,
+                        fee
+                    });
+                    const signable = ds.signature.getSignatureApi().makeSignable({
+                        type: tx.type,
+                        data: tx
+                    });
+
+                    return this.showConfirmTx(signable, true);
+                });
             }
 
             showImportAccountsModal() {

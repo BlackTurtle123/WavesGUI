@@ -3,62 +3,42 @@
     'use strict';
 
     /**
-     * @param Base
-     * @param {Waves} waves
-     * @param {User} user
+     * @param {typeof ConfirmTxService} ConfirmTxService
      * @param {$rootScope.Scope} $scope
-     * @returns {ConfirmGatewayTransaction}
      */
-    const controller = function (Base, waves, user, $scope) {
+    const controller = function (ConfirmTxService, $scope) {
 
-        class ConfirmGatewayTransaction extends Base {
+        class ConfirmGatewayTransaction extends ConfirmTxService {
 
-            constructor() {
-                super();
+            /**
+             * @type {string}
+             */
+            targetRecipient = '';
+            /**
+             * @type {IGatewayDetails}
+             */
+            gatewayDetails = null;
 
-                this.step = 0;
-            }
-
-            confirm() {
-                const timestamp = ds.utils.normalizeTime(this.tx.timestamp || Date.now());
-
-                let amount = this.tx.amount;
-                amount = amount.cloneWithTokens(amount.getTokens().plus(this.gatewayDetails.gatewayFee));
-
-                return ds.prepareForBroadcast(4, { ...this.tx, amount, timestamp }).then((preparedTx) => {
-                    return ds.broadcast(preparedTx).then(({ id }) => {
-                        this.tx.id = id;
-                        this.step++;
-                        analytics.push(
-                            'Gateway', `Gateway.Send.${WavesApp.type}`,
-                            `Gateway.Send.${WavesApp.type}.Success`, this.tx.amount);
-                        $scope.$apply();
-                    });
-                }).catch((e) => {
-                    console.error(e);
-                    console.error('Gateway transaction error!');
-                    analytics.push(
-                        'Gateway', `Gateway.Send.${WavesApp.type}`,
-                        `Gateway.Send.${WavesApp.type}.Error`, this.tx.amount);
-                    $scope.$apply();
-                });
+            getEventName() {
+                return 'Gateway';
             }
 
         }
 
-        return new ConfirmGatewayTransaction();
+        return new ConfirmGatewayTransaction($scope);
     };
 
-    controller.$inject = ['Base', 'waves', 'user', '$scope'];
+    controller.$inject = ['ConfirmTxService', '$scope'];
 
     angular.module('app.ui').component('wConfirmGatewayTransaction', {
         bindings: {
-            tx: '<',
+            signable: '<',
             gatewayDetails: '<',
             targetRecipient: '<',
             onClickBack: '&'
         },
         templateUrl: 'modules/ui/directives/confirmGatewayTransaction/confirmGatewayTransaction.html',
+        scope: false,
         transclude: false,
         controller
     });

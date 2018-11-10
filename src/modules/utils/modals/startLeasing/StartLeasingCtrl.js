@@ -12,6 +12,9 @@
      */
     const controller = function (Base, $scope, user, utils, waves, i18n) {
 
+        const { SIGN_TYPE } = require('@turtlenetwork/signature-adapter');
+        const ds = require('data-service');
+
         class StartLeasingCtrl extends Base {
 
             constructor() {
@@ -45,14 +48,22 @@
                 this.step--;
             }
 
-            next() {
-                const tx = waves.node.transactions.createTransaction('lease', {
+            sign() {
+                const tx = waves.node.transactions.createTransaction({
                     recipient: this.recipient,
                     fee: this.fee,
-                    amount: this.amount
+                    amount: this.amount,
+                    type: SIGN_TYPE.LEASE
                 });
 
-                this.tx = tx;
+                return ds.signature.getSignatureApi().makeSignable({
+                    type: tx.type,
+                    data: tx
+                });
+            }
+
+            next(signable) {
+                this.signable = signable;
                 this.step++;
             }
 

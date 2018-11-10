@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import { getType } from 'mime';
 import { exec, spawn } from 'child_process';
-import { existsSync, readdirSync, statSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'fs';
 import { join, relative, extname, dirname } from 'path';
 import { IPackageJSON, IMetaJSON, ITaskFunction, TBuild, TConnection, TPlatform } from './interface';
 import { readFile, readJSON, readJSONSync, createWriteStream, mkdirpSync, copy } from 'fs-extra';
@@ -138,16 +138,6 @@ export function isTradingView(url: string): boolean {
     return url.indexOf('/trading-view') !== -1;
 }
 
-export function prepareExport(): Promise<string> {
-    return Promise.all([
-        readJSON(join(__dirname, './meta.json')) as Promise<IMetaJSON>,
-        readFile(join(__dirname, '..', 'src', 'export.hbs'), 'utf8') as Promise<string>
-    ])
-        .then(([meta, file]) => {
-            return replaceScripts(compile(file)(meta), meta.exportPageVendors);
-        });
-}
-
 export function getAllLessFiles() {
     return getFilesFrom(join(__dirname, '../src'), '.less');
 }
@@ -263,7 +253,9 @@ export function route(connectionType: TConnection, buildType: TBuild, type: TPla
     return function (req: IncomingMessage, res: ServerResponse) {
         const url = req.url.replace(/\?.*/, '');
 
-        if (isTradingView(url)) {
+        if (url.includes('/package.json')) {
+            res.end(readFileSync(join(__dirname, '..', 'package.json')));
+        } else if (isTradingView(url)) {
             get(`https://client.wavesplatform.com/${url}`, (resp: IncomingMessage) => {
                 let data = new Buffer('');
 
@@ -311,13 +303,6 @@ export function route(connectionType: TConnection, buildType: TBuild, type: TPla
                 response.on('end', () => {
                     res.end(data);
                 });
-            });
-            return null;
-        }
-
-        if (url.indexOf('export') !== -1) {
-            prepareExport().then((file) => {
-                res.end(file);
             });
             return null;
         }
