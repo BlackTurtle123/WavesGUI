@@ -59,6 +59,10 @@
             {
                 balance: new Money(0, Currency.BCH),
                 depositWith: Currency.BCH
+            },
+            {
+                balance: new Money(0, Currency.ETH),
+                depositWith: Currency.ETH
             }
         ];
 

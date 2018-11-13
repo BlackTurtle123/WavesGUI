@@ -68,7 +68,13 @@
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'BitcoinCash-Gateway:-How-to-swap-%24BCH-to-Turtle-Network-%24tBCH'
         };
-
+        mapping[Currency.ETH.displayName] = {
+            image: 'wB-bg-WAV.svg',
+            displayName: Currency.ETH.displayName,
+            gatewayAddr: 'https://ethgw.blackturtle.eu',
+            info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
+            'Ethereum-Gateway:-How-to-swap-%24ETH-to-Turtle-Network-%24tETH'
+        };
         ctrl.$onChanges = function (changesObject) {
             if (changesObject.balance) {
                 var balance = changesObject.balance.currentValue;
