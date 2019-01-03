@@ -89,11 +89,11 @@ module.exports = function (grunt) {
             configurations: {
                 testnet: {
                     name: 'testnet',
-                    code: 'T',
-                    server: 'https://testnet1.wavesnodes.com',
-                    coinomat: 'https://test.coinomat.com',
-                    matcher: 'https://testnet1.wavesnodes.com',
-                    datafeed: 'https://marketdata.wavesplatform.com'
+                    code: 'l',
+                    server: 'https://apitnetworktest.blackturtle.eu',
+                    coinomat: 'https://blackturtle.eu',
+                    matcher: 'https://tntestnetmatcher.blackturtle.eu',
+                    datafeed: ''
                 },
                 mainnet: {
                     name: 'mainnet',
