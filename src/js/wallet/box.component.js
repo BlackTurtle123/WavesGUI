@@ -75,6 +75,13 @@
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Ethereum-Gateway:-How-to-swap-%24ETH-to-Turtle-Network-%24tETH'
         };
+        mapping[Currency.AFIN.displayName] = {
+            image: 'wB-bg-AFIN.jpg',
+            displayName: Currency.AFIN.displayName,
+            gatewayAddr: 'https://afingw.blackturtle.eu',
+            info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
+            'AFIN-Gateway:-How-to-swap-%24AFIN-to-Turtle-Network-%24tAFIN'
+        };
         ctrl.$onChanges = function (changesObject) {
             if (changesObject.balance) {
                 var balance = changesObject.balance.currentValue;

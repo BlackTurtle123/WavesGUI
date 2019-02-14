@@ -63,6 +63,10 @@
             {
                 balance: new Money(0, Currency.ETH),
                 depositWith: Currency.ETH
+            },
+            {
+                balance: new Money(0, Currency.AFIN),
+                depositWith: Currency.AFIN
             }
         ];
 
