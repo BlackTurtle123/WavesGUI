@@ -5,7 +5,7 @@
         DEFAULT_ERROR_MESSAGE = 'Failed to load balance details';
 
     function LeasingController($interval, constants, applicationContext,
-                               leasingService, transactionLoadingService, notificationService) {
+                               leasingService, notificationService) {
         var ctrl = this,
             intervalPromise;
 
@@ -47,8 +47,8 @@
         }
 
         function refreshLeasingTransactions() {
-            transactionLoadingService
-                .loadTransactions(applicationContext.account, ctrl.limitTo)
+            leasingService
+                .loadLeases(applicationContext.account)
                 .then(function (transactions) {
                     ctrl.transactions = transactions.filter(function (tx) {
                         var startLeasing = constants.START_LEASING_TRANSACTION_TYPE,
@@ -60,7 +60,7 @@
     }
 
     LeasingController.$inject = ['$interval', 'constants.transactions', 'applicationContext',
-                                 'leasingService', 'transactionLoadingService', 'notificationService'];
+                                 'leasingService', 'notificationService'];
 
     angular
         .module('app.leasing')
