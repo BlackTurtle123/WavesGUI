@@ -35,7 +35,26 @@
             type: '',
             processor: processExchangeTransaction
         };
-
+        TRANSACTION_SPEC[constants.MASS_PAYMENT_TRANSACTION_TYPE] = {
+            type: 'Mass Payment',
+            processor: processMassPaymentTransaction
+        };
+        TRANSACTION_SPEC[constants.DATA_TRANSACTION_TYPE] = {
+            type: 'Data Transfer',
+            processor: processDataTransaction
+        };
+        TRANSACTION_SPEC[constants.SCRIPT_TRANSFER_TRANSACTION_TYPE] = {
+            type: 'Script Transfer',
+            processor: processScriptTransaction
+        };
+        TRANSACTION_SPEC[constants.SPONSOR_FEE_TRANSACTION_TYPE] = {
+            type: 'Sponsor Fee',
+            processor: processSponsorTransaction
+        };
+        TRANSACTION_SPEC[constants.ASSET_SCRIPT_TRANSACTION_TYPE] = {
+            type: 'Asset Script',
+            processor: processAssetScriptTransaction
+        };
         function buildTransactionType (number) {
             var spec = TRANSACTION_SPEC[number];
 
@@ -154,6 +173,32 @@
             }
         }
 
+        function processMassPaymentTransaction(transaction) {
+            var currency = Currency.TN;
+            var assetId = transaction.assetId;
+            if (assetId) {
+                var asset = applicationContext.cache.assets[assetId];
+                if (asset) {
+                    currency = asset.currency;
+                }
+            }
+
+            transaction.formatted.asset = currency.displayName;
+            transaction.formatted.amount = Money.fromCoins(transaction.totalAmount, currency).formatAmount();
+        }
+
+        function processDataTransaction(transaction) {
+            transaction.formatted.asset = Currency.TN.displayName;
+        }
+        function processScriptTransaction(transaction) {
+            transaction.formatted.asset = Currency.TN.displayName;
+        }
+        function processSponsorTransaction(transaction) {
+            transaction.formatted.asset = Currency.TN.displayName;
+        }
+        function processAssetScriptTransaction(transaction) {
+            transaction.formatted.asset = Currency.TN.displayName;
+        }
         function formatFee(transaction) {
             var currency = Currency.TN;
             var assetId = transaction.feeAsset;
