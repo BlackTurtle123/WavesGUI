@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var url = 'www.blackturtle.eu';
+    var url = 'www.turtlenetwork.eu';
 
     function SupportLinkController() {}
 
