@@ -250,7 +250,7 @@
                 mass.summary.totalFee.plus(mass.summary.totalAmount);
 
             if (paymentCost.greaterThan(mass.wavesBalance)) {
-                notificationService.error('Not enough TurtleNode to make mass payment');
+                notificationService.error('Not enough TN to make mass payment');
 
                 return false;
             }

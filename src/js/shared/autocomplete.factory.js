@@ -8,7 +8,7 @@
                 fees: [
                     {
                         amount: 0.02,
-                        displayText: '0.02 TurtleNode'
+                        displayText: '0.02 TN'
                     }
                 ],
                 selectedFee: undefined,
