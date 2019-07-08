@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var FIXED_REISSUE_FEE = new Money(100, Currency.TN);
+    var FIXED_REISSUE_FEE = new Money(1000, Currency.TN);
 
     function WavesAssetReissueController($scope, $timeout, constants, events, applicationContext, assetService,
                                          dialogService, notificationService, formattingService, apiService,
