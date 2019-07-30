@@ -38,11 +38,14 @@ header {
 }
 
 #logoNversion2 > p {
-  position: absolute;
+  position: relative;
+  top: 30%;
+  left: 0%;
   bottom: 0;
   right: .45rem;
   color: @color-white;
-  font-size: .7rem;
+  font-size: 0.7rem;
+  font-weight: 200;
   font-style: italic;
 }
 
@@ -74,10 +77,20 @@ header {
   opacity: 1;
 }
 
+.wPop-header {
+    margin: 0;
+    padding: 0;
+    margin-top: 0rem;
+    margin-bottom: .5rem;
+    max-width: 550px;
+}
+
 /* Backup pop-up style */
 
 #header-wPop-backup {
-  max-width: 550px;
+  max-width: 650px;
+  max-height: 80%;
+  overflow-y: auto;
 }
 
 #header-wPop-backup a {

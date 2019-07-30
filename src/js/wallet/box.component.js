@@ -6,35 +6,35 @@
 
         var mapping = {};
         mapping[Currency.TN.displayName] = {
-            image: 'logo_Turtle.svg',
+            image: 'wB-bg-TN.png',
             displayName: Currency.TN.displayName,
             gatewayAddr: 'https://gateway.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'TurtleNode-Gateway:-How-to-swap-%24TN-from-Waves-Platform-to-Turtle-Network'
         };
         mapping[Currency.LTC.displayName] = {
-            image: 'wB-bg-LTC.svg',
+            image: 'wB-bg-LTC.png',
             displayName: Currency.LTC.displayName,
             gatewayAddr: 'https://litecoingw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Litecoin-Gateway:-How-to-swap-%24LTC-to-Turtle-Network-%24tLTC'
         };
         mapping[Currency.BTC.displayName] = {
-            image: 'wB-bg-BTC.svg',
+            image: 'wB-bg-BTC.png',
             displayName: Currency.BTC.displayName,
             gatewayAddr: 'https://bitcoingw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/' +
             'wiki/Bitcoin-Gateway:-How-to-swap-%24BTC-to-Turtle-Network-%24tBTC'
         };
         mapping[Currency.WAVES.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-WAV.png',
             displayName: Currency.WAVES.displayName,
             gatewayAddr: 'https://wavesgateway.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Waves-Gateway:-How-to-swap-%24WAVES-to-Turtle-Network-%24tWAVES'
         };
         mapping[Currency.DASH.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-DASH.png',
             displayName: Currency.DASH.displayName,
             gatewayAddr: 'https://dashgw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
@@ -48,35 +48,35 @@
             'Wagerr-Gateway:-How-to-swap-%24WGR-to-Turtle-Network-%24tWGR'
         };
         mapping[Currency.SYS.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-SYS.png',
             displayName: Currency.SYS.displayName,
             gatewayAddr: 'https://syscoingw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Syscoin-Gateway:-How-to-swap-%24SYS-to-Turtle-Network-%24tSYS'
         };
         mapping[Currency.DOGE.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-DOG.png',
             displayName: Currency.DOGE.displayName,
             gatewayAddr: 'https://dogegw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'DOGE-Gateway:-How-to-swap-%24DOGE-to-Turtle-Network-%24tDOGE'
         };
         mapping[Currency.BCH.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-BCH.png',
             displayName: Currency.BCH.displayName,
             gatewayAddr: 'https://bchgw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'BitcoinCash-Gateway:-How-to-swap-%24BCH-to-Turtle-Network-%24tBCH'
         };
         mapping[Currency.ETH.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-ETH.png',
             displayName: Currency.ETH.displayName,
             gatewayAddr: 'https://ethgw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Ethereum-Gateway:-How-to-swap-%24ETH-to-Turtle-Network-%24tETH'
         };
         mapping[Currency.AFIN.displayName] = {
-            image: 'wB-bg-AFIN.jpg',
+            image: 'wB-bg-AFIN.png',
             displayName: Currency.AFIN.displayName,
             gatewayAddr: 'https://afingw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
