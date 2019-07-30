@@ -44,8 +44,8 @@
 }
 .modal a.close-modal {
     position: absolute;
-    top: -8.5px;
-    right: -8.5px;
+    top: 1px;
+    right: 1px;
     display: block;
     width: 25px;
     height: 25px;

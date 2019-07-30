@@ -22,7 +22,7 @@ div.banner {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #c21208;
+  background-color: @color-navy-green;
   width: 100%;
 }
 
@@ -72,7 +72,7 @@ div.banner-content {
 }
 
 #lockscreen {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -83,8 +83,9 @@ div.banner-content {
 }
 
 .userBG {
+  position: absolute;
   min-height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@{img}/lockbg005b.jpg') no-repeat fixed center center;
+  background:  url('@{img}/lockbg005c.png');
   background-size: cover;
 }
 
@@ -95,6 +96,7 @@ div.banner-content {
   height: auto;
   text-align: center;
   cursor: default;
+  color: @color-navy-green;
   overflow-y: scroll;
 }
 
@@ -105,14 +107,17 @@ div.banner-content {
 
   & > img {
     width: 12rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    align-content: center;
   }
 
   & > p {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: .85rem;
+    color: @color-navy-green;
+    font-size: 1rem;
+    font-weight: bold;
     font-style: italic;
   }
 }

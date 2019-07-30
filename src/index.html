@@ -53,7 +53,7 @@
 
     <thead>
     <div id="logoNversion">
-      <img src="img/topleftlogo.svg" style="width: 50%; height: 50%" />
+      <img src="img/logo_Turtle2.png" style="width: 90%; height: 90%" />
       <p ng-class='{testnet: isTestnet()}'>{{::home.title}} <span class="wlcversion">{{::home.version}}</span></p>
     </div>
     </thead>
@@ -225,21 +225,28 @@
 <div id="wrapper" ng-switch-when="main-screen" ng-cloak>
   <!-- shared blocks -->
   <div id="feat-not-active" waves-dialog global="true" show-buttons="false" is-error="true">
-    <h2 class="sectionHeader">NOTICE</h2>
-    <p class="dialog-text">This feature is still under development and not active during the alpha release.</p>
+    <h2 class="sectionHeader">STAY CONNECTED</h2>
     <p class="dialog-text">Follow our social media channels to stay up to date with the latest improvements and developments.</p>
     <div class="modal-media">
-      <a href="https://twitter.com/TurtleNetworkTN" target="_blank"><img class="modal-media-img" src="img/twitter_icon.svg" /></a>
-      <a href="https://www.facebook.com/TurtleNetworkTN/" target="_blank"><img class="modal-media-img" src="img/facebook_icon.svg" /></a>
+      <a href="https://t.me/TurtleNetwork" target="_blank"><img class="modal-media-img" src="img/telegram_icon.png" /></a>
+      <a href="https://twitter.com/TurtleNetworkTN" target="_blank"><img class="modal-media-img" src="img/twitter_icon.png" /></a>
+      <a href="https://www.facebook.com/TurtleNetworkTN/" target="_blank"><img class="modal-media-img" src="img/facebook_icon.png" /></a>
+      <a href="https://www.youtube.com/channel/UCzbSukzGRKxpNov6yp4275w" target="_blank"><img class="modal-media-img" src="img/youtube_icon.png" /></a>
+      <a href="https://www.instagram.com/turtlenetworktn/" target="_blank"><img class="modal-media-img" src="img/instagram_icon.png" /></a>
+      <a href="https://www.reddit.com/r/TurtleNetwork/" target="_blank"><img class="modal-media-img" src="img/reddit_icon.png" /></a>
+      <a href="https://github.com/BlackTurtle123/TurtleNetwork" target="_blank"><img class="modal-media-img" src="img/github_icon.png" /></a>
+      <a href="https://github.com/BlackTurtle123/TurtleNetwork/wiki" target="_blank"><img class="modal-media-img" src="img/git-wiki_icon.png" /></a>
+      <a href="https://bitcointalk.org/index.php?topic=5138663" target="_blank"><img class="modal-media-img" src="img/bitcointalk_icon.png" /></a>
+      <a href="https://www.linkedin.com/company/blackturtle-bvba" target="_blank"><img class="modal-media-img" src="img/in_icon.png" /></a>
     </div>
   </div>
   <!-- /shared blocks-->
 
   <!-- HEADER -->
   <header class="fFade noSelect" ng-controller="mainMenuController as menu">
-    <img id="topLogoH" src="img/topleftlogo_hor.svg" style="width: 50%; height: 50%" alt="Waves platform logo horizontal" />
+    <!--<img id="topLogoH" src="img/topleftlogo_hor.svg" style="width: 50%; height: 50%" alt="Waves platform logo horizontal" /> -->
     <div id="logoNversion2">
-      <img src="img/topleftlogo.svg" style="width: 50%; height: 50%" />
+      <!--<img src="img/topleftlogo.png" style="width: 50%; height: 50%" />-->
       <p ng-class='{testnet: isTestnet()}'>{{::home.title}} <span class="wlcversion">{{::home.version}}</span></p>
     </div>
     <span id="version" class="centerIt">
@@ -284,15 +291,15 @@
         </form>
       </div>
       <a ng-click="home.featureUnderDevelopment()">
-        <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-preferences.svg" alt="Preferences" title="Preferences"/>
+        <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-preferences.svg" alt="Preferences" title="Social Media"/>
       </a>
       <a ng-click="menu.showProfileDialog()">
-        <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-profile.svg" alt="User profile" title="User profile"/>
+        <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-profile.svg" alt="User profile" title="Aliases"/>
       </a>
       <div class="noDisp" ng-controller="createAliasController as create">
         <div id="create-alias-dialog" waves-dialog global="true" ok-button-caption="CREATE" on-dialog-ok="create.confirmCreateAlias(create.form)">
           <div class="existing-aliases">
-            <h2 class="sectionHeader">YOUR ALIASES</h2>
+            <h2 class="sectionHeader"><b style="font-size:135%">YOUR ALIASES</b></h2>
             <div ng-if="create.aliasList !== null">
               <span ng-repeat="alias in create.aliasList"><span class="alias">{{alias}}</span>&nbsp;</span>
               <span ng-if="create.aliasList.length === 0">You don't have any aliases yet</span>
@@ -301,7 +308,7 @@
               <span>Loading...</span>
             </div>
           </div>
-          <h2 class="sectionHeader">CREATE NEW ALIAS</h2>
+          <h2 class="sectionHeader"><i>Create New alias</i></h2>
           <p>Here you can assign a symbolic name to your address</p>
           <form name="create.form" novalidate ng-validate="create.validationOptions">
             <table>
@@ -405,7 +412,7 @@
               tooltipster
               tooltip-html
               tooltip-theme="tooltipster-theme3"
-              tooltip-title="<center><u>Community tab</u></center><br/>Resources to learn more about TurtleNetwork project such as <br/>forums, blogs, websites, etc."></span>
+              tooltip-title="<center><u>Explorer tab</u></center><br/>Resources to learn more about the Turtle blockchain<br/>blockheights, transactions, exchanges, etc."></span>
       </div>
     </section>
 
@@ -966,9 +973,9 @@
         <!-- COMMUNITY TAB -->
         <div id="mBB-community" class="mBB-content" ng-switch-when="community" ng-controller="communityController as community">
           <!-- Temporary -->
-          <p>DISCLAIMER: This tab represents the block from Turtle Network blockchain.</p>
+          <p>This tab represents the blockchain from Turtle Network.</p>
           <p>Click<a href="https://explorer.turtlenetwork.eu/" target="_blank"> here </a>to visit the block explorer</p>
-          <h2 class="sectionHeader">LATEST BLOCKS INFORMATION</h2>
+          <h2 class="sectionHeader">LATEST BLOCK INFORMATION</h2>
           <p class="centerIt">
           <div id="latestBlocks" class="wavesTable wScroll" >
             <table>
@@ -998,7 +1005,6 @@
               </tbody>
             </table>
           </div>
-
           </p>
         </div>
         <!-- /COMMUNITY TAB -->
