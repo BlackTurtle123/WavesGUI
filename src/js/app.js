@@ -41,7 +41,7 @@ function AngularApplicationConfig($provide, $compileProvider, $validatorProvider
         }));
     $provide.constant(applicationSettings,
         angular.extend(applicationSettings, {
-            CLIENT_VERSION: '0.5.1TN',
+            CLIENT_VERSION: '0.5.2',
             NODE_ADDRESS: 'https://privatenode2.blackturtle.eu',
             COINOMAT_ADDRESS: 'https://coinomat.com',
             MATCHER_ADDRESS: 'https://privatematcher.blackturtle.eu',
