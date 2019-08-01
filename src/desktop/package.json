@@ -1,6 +1,6 @@
 {
   "name": "TurtleNetwork Lite Client",
-  "version": "0.5.18",
+  "version": "0.5.20",
   "description": "A lite client for the TurtleNetwork.",
   "license": "Apache-2.0",
   "main": "main.js"
