@@ -28,5 +28,8 @@
     "waves-angular-validate": "https://github.com/beregovoy68/angular-validate.git#master",
     "wavesplatform-core-js": "https://github.com/BlackTurtle123/wavesplatform.core.js.git#master"
   },
-  "analytics": false
+  "analytics": false,
+  "resolutions": {
+    "angular": "~1.6.0"
+  }
 }
