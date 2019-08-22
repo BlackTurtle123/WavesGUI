@@ -18,7 +18,7 @@ function createWindow () {
         minWidth: 800,
         minHeight: 600,
         center: true,
-        title: 'Turtle Network client',
+        title: 'Turtle Network',
         webPreferences: {
             nodeIntegration: false,
             defaultEncoding: 'UTF-8'
