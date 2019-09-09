@@ -1,6 +1,6 @@
 {
   "name": "waves-lite-client",
-  "version": "0.5.18",
+  "version": "0.5.20",
   "dependencies": {
     "angular": "~1.6.0",
     "angular-route": "~1.6.0",
@@ -28,5 +28,8 @@
     "waves-angular-validate": "https://github.com/beregovoy68/angular-validate.git#master",
     "wavesplatform-core-js": "https://github.com/BlackTurtle123/wavesplatform.core.js.git#master"
   },
-  "analytics": false
+  "analytics": false,
+  "resolutions": {
+    "angular": "~1.6.0"
+  }
 }
