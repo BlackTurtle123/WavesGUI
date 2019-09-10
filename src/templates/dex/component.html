@@ -58,12 +58,24 @@
 <aside class="pairs-lists">
   <waves-dex-favorites pairs="$ctrl.favoritePairs"
                        switch-pair="$ctrl.changePair"></waves-dex-favorites>
-  <div class="how-to">
-    <h3>Quick guide</h3>
-    <p>1. Choose a pair of assets you want to trade. Just start typing asset name, then pick the right one.</p>
+
+
+	<div class="how-to">
+   		<h3>Quick guide</h3>
+  
+  <span waves-tab
+              on-select="nav.changeTab(pageId)"
+              current-page-id="nav.currentTab"
+              page-id="Quick guide"
+              caption="'Quick guide'"
+              tooltipster
+              tooltip-html
+              tooltip-theme="tooltipster-theme3"
+              tooltip-title="<center><u>History</u></center><br/><p>1. Choose a pair of assets you want to trade. Start typing the asset name, then pick the right one.</p>
     <p>2. Take a look at orderbooks to get an understanding of the pair market.</p>
-    <p>3. Finally, fill the form and submit your order.</p>
+    <p>3. Finally, fill the form and submit your order.</p>"></span>
   </div>
+  
 </aside>
 
 <div id="dex-bad-order-confirmation" waves-dialog ok-button-caption="YES" on-dialog-ok="$ctrl.placeBadOrder()" cancel-button-caption="NO" on-dialog-cancel="$ctrl.refuseBadOrder()">
@@ -71,3 +83,13 @@
     <p class="dialog-text">{{$ctrl.badOrderQuestion}}</p>
   </div>
 </div>
+
+
+
+
+<span waves-tab="" tooltipster="" tooltip-html="" tooltip-theme="tooltipster-theme3" tooltip-title="<center><u>TurtleNetwork Decentralized Exchange</u></center><br/>Access to TurtleNetwork markets where you can<br/>conveniently buy, sell and trade tokens." class="ng-isolate-scope tabs-radio tooltipstered"><img ng-src="img/tabs-iconset-exchange.png" class="fFade" alt="Exchange tab" ng-click="onClick()" ng-class="[{selected: isSelected()}]" role="button" tabindex="0" src="img/tabs-iconset-exchange.png"></span>
+
+
+
+
+
