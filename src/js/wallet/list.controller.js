@@ -45,6 +45,10 @@
                 depositWith: Currency.DASH
             },
             {
+                balance: new Money(0, Currency.TUSD),
+                depositWith: Currency.TUSD
+            },
+            {
                 balance: new Money(0, Currency.WGR),
                 depositWith: Currency.WGR
             },
@@ -63,10 +67,6 @@
             {
                 balance: new Money(0, Currency.ETH),
                 depositWith: Currency.ETH
-            },
-            {
-                balance: new Money(0, Currency.AFIN),
-                depositWith: Currency.AFIN
             }
         ];
 

@@ -47,6 +47,12 @@
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Wagerr-Gateway:-How-to-swap-%24WGR-to-Turtle-Network-%24tWGR'
         };
+        mapping[Currency.TUSD.displayName] = {
+            image: 'wB-bg-TUSD.svg',
+            displayName: Currency.TUSD.displayName,
+            gatewayAddr: 'https://gateway.mortysnode.nl/',
+            info: 'https://rcanelabs.com/tokens'
+        };
         mapping[Currency.SYS.displayName] = {
             image: 'wB-bg-SYS.png',
             displayName: Currency.SYS.displayName,
@@ -74,13 +80,6 @@
             gatewayAddr: 'https://ethgw.blackturtle.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Ethereum-Gateway:-How-to-swap-%24ETH-to-Turtle-Network-%24tETH'
-        };
-        mapping[Currency.AFIN.displayName] = {
-            image: 'wB-bg-AFIN.png',
-            displayName: Currency.AFIN.displayName,
-            gatewayAddr: 'https://afingw.blackturtle.eu',
-            info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
-            'AFIN-Gateway:-How-to-swap-%24AFIN-to-Turtle-Network-%24tAFIN'
         };
         ctrl.$onChanges = function (changesObject) {
             if (changesObject.balance) {

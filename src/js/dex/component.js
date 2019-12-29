@@ -35,11 +35,11 @@
             { amountAsset: Currency.TN, priceAsset: Currency.SYS },
             { amountAsset: Currency.TN, priceAsset: Currency.DASH },
             { amountAsset: Currency.TN, priceAsset: Currency.ETH },
-            { amountAsset: Currency.TN, priceAsset: Currency.AFIN },
             { amountAsset: Currency.WGR, priceAsset: Currency.TN },
             { amountAsset: Currency.WGR, priceAsset: Currency.BTC },
             { amountAsset: Currency.BTC, priceAsset: Currency.WAVES },
             { amountAsset: Currency.BTC, priceAsset: Currency.DASH },
+            { amountAsset: Currency.BTC, priceAsset: Currency.DOGE },
             { amountAsset: Currency.LTC, priceAsset: Currency.DASH },
 
         ];
