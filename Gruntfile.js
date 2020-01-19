@@ -93,7 +93,7 @@ module.exports = function (grunt) {
                     server: 'https://apitnetworktest.blackturtle.eu',
                     coinomat: 'https://blackturtle.eu',
                     matcher: 'https://tntestnetmatcher.blackturtle.eu',
-                    datafeed: ''
+                    datafeed: 'https://api.marketdata.turtlenetwork.eu/testnet/'
                 },
                 mainnet: {
                     name: 'mainnet',
@@ -101,7 +101,7 @@ module.exports = function (grunt) {
                     server: 'https://privatenode.blackturtle.eu',
                     coinomat: 'https://coinomat.com',
                     matcher: 'https://privatematcher.blackturtle.eu',
-                    datafeed: 'https://bot.blackturtle.eu/api-0.0.1-SNAPSHOT'
+                    datafeed: 'https://api.marketdata.turtlenetwork.eu/'
                 },
                 devnet: {
                     name: 'devnet',
