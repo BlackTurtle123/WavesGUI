@@ -63,7 +63,7 @@
         mapping[Currency.DOGE.displayName] = {
             image: 'wB-bg-DOG.png',
             displayName: Currency.DOGE.displayName,
-            gatewayAddr: 'https://dogegw.blackturtle.eu',
+            gatewayAddr: 'https://dogegw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'DOGE-Gateway:-How-to-swap-%24DOGE-to-Turtle-Network-%24tDOGE'
         };
