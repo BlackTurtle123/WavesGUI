@@ -8,7 +8,7 @@
         mapping[Currency.TN.displayName] = {
             image: 'wB-bg-TN.png',
             displayName: Currency.TN.displayName,
-            gatewayAddr: 'https://gateway.blackturtle.eu',
+            gatewayAddr: 'https://gateway.turtlenetwork.eu/',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'TurtleNode-Gateway:-How-to-swap-%24TN-from-Waves-Platform-to-Turtle-Network'
         };
@@ -29,7 +29,7 @@
         mapping[Currency.WAVES.displayName] = {
             image: 'wB-bg-WAV.png',
             displayName: Currency.WAVES.displayName,
-            gatewayAddr: 'https://wavesgateway.blackturtle.eu',
+            gatewayAddr: 'https://wavesgw.turtlenetwork.eu/',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Waves-Gateway:-How-to-swap-%24WAVES-to-Turtle-Network-%24tWAVES'
         };
