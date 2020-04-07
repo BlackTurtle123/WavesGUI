@@ -15,14 +15,14 @@
         mapping[Currency.LTC.displayName] = {
             image: 'wB-bg-LTC.png',
             displayName: Currency.LTC.displayName,
-            gatewayAddr: 'https://litecoingw.blackturtle.eu',
+            gatewayAddr: 'https://ltcgw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Litecoin-Gateway:-How-to-swap-%24LTC-to-Turtle-Network-%24tLTC'
         };
         mapping[Currency.BTC.displayName] = {
             image: 'wB-bg-BTC.png',
             displayName: Currency.BTC.displayName,
-            gatewayAddr: 'https://bitcoingw.blackturtle.eu',
+            gatewayAddr: 'https://btcgw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/' +
             'wiki/Bitcoin-Gateway:-How-to-swap-%24BTC-to-Turtle-Network-%24tBTC'
         };
@@ -36,7 +36,7 @@
         mapping[Currency.DASH.displayName] = {
             image: 'wB-bg-DASH.png',
             displayName: Currency.DASH.displayName,
-            gatewayAddr: 'https://dashgw.blackturtle.eu',
+            gatewayAddr: 'https://dashgw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Dash-Gateway:-How-to-swap-%24DASH-to-Turtle-Network-%24tDASH'
         };
@@ -56,7 +56,7 @@
         mapping[Currency.SYS.displayName] = {
             image: 'wB-bg-SYS.png',
             displayName: Currency.SYS.displayName,
-            gatewayAddr: 'https://syscoingw.blackturtle.eu',
+            gatewayAddr: 'https://sysgw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'Syscoin-Gateway:-How-to-swap-%24SYS-to-Turtle-Network-%24tSYS'
         };
@@ -70,7 +70,7 @@
         mapping[Currency.BCH.displayName] = {
             image: 'wB-bg-BCH.png',
             displayName: Currency.BCH.displayName,
-            gatewayAddr: 'https://bchgw.blackturtle.eu',
+            gatewayAddr: 'https://bchgw.turtlenetwork.eu',
             info: 'https://github.com/BlackTurtle123/TurtleNetwork/wiki/' +
             'BitcoinCash-Gateway:-How-to-swap-%24BCH-to-Turtle-Network-%24tBCH'
         };
